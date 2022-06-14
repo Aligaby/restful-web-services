@@ -1,0 +1,24 @@
+{
+  "name": "restful-web-services",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aligaby/restful-web-services.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aligaby/restful-web-services/issues"
+  },
+  "homepage": "https://github.com/Aligaby/restful-web-services#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
