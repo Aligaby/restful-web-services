@@ -4,7 +4,6 @@ import { accessDb } from "../config/dbConnect.js";
 import Book from "../models/bookModel.js";
 
 const app = express();
-const db = mongoose.connect(accessDb.MONGO_URI, {dbName: accessDb.MONGO_DB})
 const bookRouter = express.Router();
 
 bookRouter.route('/books').get((req, res) => {
