@@ -1,7 +1,5 @@
 import express from "express";
-// import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import Book from "../models/bookModel.js";
 import bookRouter from "../routes/bookRouter.js";
 
 const app = express();

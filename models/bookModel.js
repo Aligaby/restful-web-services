@@ -8,7 +8,7 @@ const bookModel = new Schema(
     author: {type:String},
     genre: {type:String},
     read: {type:Boolean, default: false}
-  }
+  }/*, { versionKey: false } */
 );
 
 export default mongoose.model('Book', bookModel);
