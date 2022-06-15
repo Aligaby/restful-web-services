@@ -2,9 +2,15 @@ import app from "./src/app.js";
 import mongoose from "mongoose";
 import { accessDb } from "./config/dbConnect.js";
 
-(async function () {
+(function () {
   try {
-    await mongoose.connect(accessDb.MONGO_URI, { dbName: accessDb.MONGO_DB });
+    if (process.env.ENV === "Test") {
+      console.log("This is a test");
+      mongoose.connect("mongodb://localhost/bookAPI_Test");
+    } else {
+      console.log("This is for real");
+      mongoose.connect(accessDb.MONGO_URI, { dbName: accessDb.MONGO_DB });
+    }
 
     const port = process.env.PORT || 3000;
     app.listen(port, () => {
