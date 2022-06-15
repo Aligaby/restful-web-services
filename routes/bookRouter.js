@@ -13,36 +13,17 @@ function routes() {
         req.book = books;
         return next();
       }
-      // return res.json(books);
     });
-  });
-
-  bookRouter.route("/books").get((req, res) => {
-    return res.json(req.book);
-    // Book.find((err, books) => {
-    //   if (err) {
-    //     return res.send(err);
-    //   }
-    //   return res.json(books);
-    // });
   });
 
   bookRouter
     .route("/books")
+    .get((req, res) => res.json(req.book))
     .post((req, res) => {
       const book = new Book(req.body);
       book.save();
 
       return res.json(book);
-    })
-    .get((req, res) => {
-      return res.json(req.book);
-      // Book.find((err, books) => {
-      //   if (err) {
-      //     return res.send(err);
-      //   }
-      //   return res.json(books);
-      // });
     });
 
   bookRouter.use("/books/:bookId", (req, res, next) => {
