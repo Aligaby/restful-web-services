@@ -5,10 +5,8 @@ import { accessDb } from "./config/dbConnect.js";
 (function () {
   try {
     if (process.env.ENV === "Test") {
-      console.log("This is a test");
       mongoose.connect("mongodb://localhost/bookAPI_Test");
     } else {
-      console.log("This is for real");
       mongoose.connect(accessDb.MONGO_URI, { dbName: accessDb.MONGO_DB });
     }
 
