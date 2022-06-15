@@ -1,8 +1,10 @@
 import express from "express";
 import Book from "../models/bookModel.js";
+import booksController from "../controllers/booksController.js";
 
 function routes() {
   const bookRouter = express.Router();
+  const controller = booksController(Book);
 
   bookRouter.use("/books", (req, res, next) => {
     Book.find((err, books) => {
@@ -16,15 +18,7 @@ function routes() {
     });
   });
 
-  bookRouter
-    .route("/books")
-    .get((req, res) => res.json(req.book))
-    .post((req, res) => {
-      const book = new Book(req.body);
-      book.save();
-
-      return res.json(book);
-    });
+  bookRouter.route("/books").get(controller.get).post(controller.post);
 
   bookRouter.use("/books/:bookId", (req, res, next) => {
     Book.findById(req.params.bookId, (err, book) => {
@@ -80,7 +74,7 @@ function routes() {
         if (err) {
           return res.send(err);
         }
-        return res.sendStatus(204);
+        return res.status(200).send(`This ID ${req.params.bookId} was deleted`);
       });
     });
 
